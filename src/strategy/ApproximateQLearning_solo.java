@@ -67,18 +67,20 @@ public class ApproximateQLearning_solo extends Strategy{
 		snake_copy.move(agentAction, nextState);
 		
 		boolean reverse=false;
-		
+		double alive;
 		//f[]=0;//snake.getSize();
 		//f[2]=0;//this.closestItem(nextState,snake_copy,nextState.getItems());
 		if(!isLegalMove(snake,agentAction)) {
 			printDebug(agentAction+" illegalReverse");
 			f[3]=0;
 			reverse=true;
+			 alive=0;
 		}
 		else {
 			f[3]=0.5;
+			 alive=this.snakeAlive(snake_copy,nextState);
 		}
-		double alive=this.snakeAlive(snake_copy,nextState);
+		
 		f[1]=alive/10;
 		if(alive==0||reverse) {
 			f[2]=0;
@@ -265,7 +267,7 @@ public boolean isLegalMove(Snake snake, AgentAction action) {
 		if(isFinalState) {
 			int walls=state.getWalls()[0][0]?2:0;
 			int maxPossibleSize=(state.getSizeX()-walls)*(state.getSizeY()-walls);
-			if(state.getSnakes().get(idx).getSize()>=maxPossibleSize*0.2) {
+			if(state.getSnakes().get(idx).getSize()>=maxPossibleSize*0.85) {
 				target=10;
 			}
 			else {

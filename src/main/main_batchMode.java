@@ -33,7 +33,7 @@ public class main_batchMode {
 
 		boolean randomFirstApple = true;	
 		
-		String layoutName = "layouts/alone/small_alone_with_walls.lay";
+		String layoutName = "layouts/duel/small_duel_with_walls.lay";
 		//String layoutName="layouts/duel/small_duel_with_walls.lay";
 		//String layoutName="layouts/mmo/huge.lay";
 		
@@ -58,7 +58,7 @@ public class main_batchMode {
 		 
 			
 		//// Préciser ici les stratégies pour chaque Snake
-		for(int i=0;i<1;i++) {
+		for(int i=0;i<inputMap.getStart_snakes().size();i++) {
 			arrayStrategies[i] = new ApproximateQLearning_solo(4, epsilon, gamma, alpha);
 		}
 		//arrayStrategies[0] = new TabularQLearning_solo(4, epsilon, gamma, alpha);
